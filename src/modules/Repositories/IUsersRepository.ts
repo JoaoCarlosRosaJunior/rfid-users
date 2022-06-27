@@ -17,6 +17,7 @@ interface IUserRepository {
     permission,
     github_link,
   }: ICreateUserDTO): Promise<void>;
+  findByID(id_tag: number): Promise<User>;
 }
 
 export { IUserRepository, ICreateUserDTO };

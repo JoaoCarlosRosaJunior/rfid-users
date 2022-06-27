@@ -4,7 +4,11 @@ import { container } from "tsyringe";
 
 class CreateUserController {
   async handle(request: Request, response: Response): Promise<Response> {
+    console.log("chegou");
+
     const { id_tag, name, permission, github_link } = request.body;
+
+    console.log("body", request.body);
 
     const createUserUseCase = container.resolve(CreateUserUseCase);
 
