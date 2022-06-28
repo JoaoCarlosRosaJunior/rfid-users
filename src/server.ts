@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import "reflect-metadata";
 import express from "express";
 import "./shared/container";
@@ -15,5 +16,7 @@ app.use(cors());
 app.use(router);
 
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
+
+dotenv.config();
 
 app.listen(3333, () => console.log("Ther server is running"));

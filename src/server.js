@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var dotenv_1 = __importDefault(require("dotenv"));
+require("reflect-metadata");
+var express_1 = __importDefault(require("express"));
+require("./shared/container");
+require("./database");
+var routes_1 = require("./routes");
+var swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+var swagger_json_1 = __importDefault(require("./swagger.json"));
+var cors_1 = __importDefault(require("cors"));
+var app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
+app.use(routes_1.router);
+app.use("/api-docs", swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_json_1.default));
+dotenv_1.default.config();
+app.listen(3333, function () { return console.log("Ther server is running"); });
