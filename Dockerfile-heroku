@@ -1,0 +1,12 @@
+FROM node:latest
+
+# Set working directory.
+WORKDIR /usr/app
+
+COPY src/server.ts /usr/app/src/server.ts
+
+# Install and cache dependencies.
+COPY package.json /usr/app/package.json
+RUN npm install
+
+CMD ["npm", "run", "start"]
